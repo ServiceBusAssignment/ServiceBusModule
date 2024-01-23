@@ -14,12 +14,16 @@ variable "queue_name" {
   default = "queue1"
   description = "The name of the ServiceBus Queue."
 }
-// Optional: Dead Letter Queue
+# Optional: Dead Letter Queue
 variable "dead_lettering_enabled" {
   default = false
   description = "Whether or not this queue has dead letter support when a message expires."
 }
-// Optional: Monitoring
+# Optional: Monitoring
+variable "action_group_name" {
+  default = "action-group-0"
+  description = "The name of the Action Group"
+}
 variable "action_group_short_name" {
 default = "p0action"
 description = "The short name of the Action Group."

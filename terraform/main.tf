@@ -36,6 +36,7 @@ module "servicebus-queue" {
 module "action-group" {
   source = "./action-group"
   resource_group_name = module.resource-group.resource_group_name
+  action_group_name = var.action_group_name
   short_name = var.action_group_short_name
 }
 
