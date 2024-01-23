@@ -1,3 +1,11 @@
+variable "resouce_group_location" {
+  default = "Germany West Central"
+  description = "The location of the Resource Group."
+}
+variable "resource_group_name" {
+  default = "myTFResourceGroup"
+  description = "The name of the Resource Group."
+}
 variable "namespace_name" {
   default = "testns22"
   description = "The name of the Azure ServiceBus Namespace."

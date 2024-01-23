@@ -14,6 +14,8 @@ provider "azurerm" {
 
 module "resource-group" {
   source = "./resource-group"
+  resource_group_location = var.resouce_group_location
+  resource_group_name = var.resource_group_name
 }
 
 module "servicebus-namespace" {
