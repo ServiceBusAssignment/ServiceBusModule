@@ -17,7 +17,7 @@ variable "queue_name" {
 // Optional: Dead Letter Queue
 variable "dead_lettering_enabled" {
   default = false
-  description = "Whether or not dead letting is enabled on this queue."
+  description = "Whether or not this queue has dead letter support when a message expires."
 }
 // Optional: Monitoring
 variable "action_group_short_name" {
