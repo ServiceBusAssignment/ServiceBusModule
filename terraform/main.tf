@@ -27,4 +27,5 @@ module "servicebus-queue" {
   source = "./servicebus-queue"
   queue_name = var.queue_name
   namespace_id = module.servicebus-namespace.namespace_id
+  dead_lettering_enabled = var.dead_lettering_enabled
 }
