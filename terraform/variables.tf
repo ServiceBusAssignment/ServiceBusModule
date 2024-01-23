@@ -1,14 +1,26 @@
 variable "namespace_name" {
-  type = string
-  description = "The name of the Azure ServiceBus Namespace"
+  default = "testns22"
+  description = "The name of the Azure ServiceBus Namespace."
 }
-
 variable "queue_name" {
-  type = string
-  description = "The name of the ServiceBus Queue"
+  default = "queue1"
+  description = "The name of the ServiceBus Queue."
 }
-
+// Optional: Dead Letter Queue
 variable "dead_lettering_enabled" {
-  type = bool
+  default = false
   description = "Whether or not dead letting is enabled on this queue."
+}
+// Optional: Monitoring
+variable "action_group_short_name" {
+default = "p0action"
+description = "The short name of the Action Group."
+}
+variable "alert_message_threshold" {
+  default = 10
+  description = "The threshold of total messages which triggers an alert."
+}
+variable "alert_name" {
+  default = "alert1"
+  description = "The name of the alert."
 }

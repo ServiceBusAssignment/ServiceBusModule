@@ -29,3 +29,19 @@ module "servicebus-queue" {
   namespace_id = module.servicebus-namespace.namespace_id
   dead_lettering_enabled = var.dead_lettering_enabled
 }
+
+
+module "action-group" {
+  source = "./action-group"
+  resource_group_name = module.resource-group.resource_group_name
+  short_name = var.action_group_short_name
+}
+
+module "metric-alert" {
+  source = "./metric-alert"
+  action_group_id = module.action-group.action_group_id
+  alert_name = var.alert_name
+  message_threshold = var.alert_message_threshold
+  namespace_id = module.servicebus-namespace.namespace_id
+  resource_group_name = module.resource-group.resource_group_name
+}
