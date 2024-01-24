@@ -9,6 +9,12 @@ resource "azurerm_monitor_metric_alert" "metric-alert" {
     metric_namespace = var.metric_namespace
     operator         = var.operator
     threshold        = var.message_threshold
+
+    dimension {
+      name     = var.dimension_name
+      operator = var.dimension_operator
+      values   = var.dimension_values
+    }
   }
 
   action {

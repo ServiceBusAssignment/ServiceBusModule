@@ -25,3 +25,13 @@ variable "metric_namespace" {
 variable "operator" {
   description = "The operator applied to the threshold to trigger an alert."
 }
+variable "dimension_name" {
+  description = "The dimension name."
+}
+variable "dimension_operator" {
+  description = "The operator applied to the dimension."
+}
+variable "dimension_values" {
+  description = "A list describing the dimension values."
+  type = list(string)
+}
