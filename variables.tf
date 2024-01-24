@@ -41,6 +41,7 @@ variable "alert_rule" {
     alert_name = string
     metric_name = string
     threshold   = number
+    dimension_operator = string
     queue_name_list  = list(string)
   }))
   default = {
@@ -48,22 +49,21 @@ variable "alert_rule" {
       alert_name = "testAlert"
       metric_name = "Messages"
       threshold   = 10
+      dimension_operator = "Include"
       queue_name_list  = ["queue1"]
-    },
+    }
+    rule2 = {
+      alert_name = "testAlert2"
+      metric_name = "DeadletteredMessages"
+      threshold   = 0
+      dimension_operator = "Include"
+      queue_name_list  = ["queue2"]
+    }
   }
 }
 variable "dimension_name" {
   default     = "EntityName"
   description = "The dimension name."
-}
-variable "dimension_operator" {
-  default     = "Include"
-  description = "The operator applied to the dimension."
-}
-variable "dimension_values" {
-  default     = ["queue2"]
-  description = "A list describing the dimension values."
-  type        = list(string)
 }
 # Metric for above alert
 variable "metric_aggregation" {

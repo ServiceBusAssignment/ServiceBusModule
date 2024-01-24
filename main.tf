@@ -47,16 +47,17 @@ module "metric-alert" {
   source = "./metric-alert"
   for_each = var.alert_rule
 
-  action_group_id = module.action-group.action_group_id
   alert_name = each.value.alert_name
+  dimension_operator = each.value.dimension_operator
+  dimension_values = each.value.queue_name_list
   message_threshold = each.value.threshold
+  metric_name = each.value.metric_name
+
+  action_group_id = module.action-group.action_group_id
   namespace_id = module.servicebus-namespace.namespace_id
   resource_group_name = module.resource-group.resource_group_name
   aggregation = var.metric_aggregation
-  metric_name = each.value.metric_name
   metric_namespace = var.metric_namespace
   operator = var.metric_operator
   dimension_name = var.dimension_name
-  dimension_operator = var.dimension_operator
-  dimension_values = each.value.queue_name_list
 }
