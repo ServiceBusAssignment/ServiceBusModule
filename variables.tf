@@ -23,7 +23,7 @@ variable "queue_name_and_dlq" {
     "queue2" = true
   }
   description = "Map Service Bus Queue names (string) as key and the respective dead_lettering_enabled value (bool) as value."
-  type = map(bool)
+  type        = map(bool)
 }
 # Action Group
 variable "action_group_name" {
@@ -38,26 +38,26 @@ variable "action_group_short_name" {
 variable "alert_rule" {
   description = "Map of alert rules. Describes the desired alert name, metric (by name), threshold, and list of queues to monitor."
   type        = map(object({
-    alert_name = string
-    metric_name = string
-    threshold   = number
+    alert_name         = string
+    metric_name        = string
+    threshold          = number
     dimension_operator = string
-    queue_name_list  = list(string)
+    queue_name_list    = list(string)
   }))
   default = {
     rule1 = {
-      alert_name = "testAlert"
-      metric_name = "Messages"
-      threshold   = 10
+      alert_name         = "testAlert"
+      metric_name        = "Messages"
+      threshold          = 10
       dimension_operator = "Include"
-      queue_name_list  = ["queue1"]
+      queue_name_list    = ["queue1"]
     }
     rule2 = {
-      alert_name = "testAlert2"
-      metric_name = "DeadletteredMessages"
-      threshold   = 0
+      alert_name         = "testAlert2"
+      metric_name        = "DeadletteredMessages"
+      threshold          = 0
       dimension_operator = "Include"
-      queue_name_list  = ["queue2"]
+      queue_name_list    = ["queue2"]
     }
   }
 }

@@ -33,5 +33,5 @@ variable "dimension_operator" {
 }
 variable "dimension_values" {
   description = "A list describing the dimension values."
-  type = list(string)
+  type        = list(string)
 }
