@@ -17,14 +17,19 @@ variable "namespace_sku" {
   description = "The Stock Keeping Unit Tier of the ServiceBus Namespace."
 }
 # ServiceBus Queue
-variable "queue_name" {
-  default = "queue1"
-  description = "The name of the ServiceBus Queue."
+variable "queue_names" {
+  default = ["queue1", "queue2"]
+  description = "List of names of the ServiceBus Queues."
+  type = list(string)
 }
 # Dead Letter Queue
 variable "dead_lettering_enabled" {
-  default = false
-  description = "Whether or not this queue has dead letter support when a message expires."
+  default = {
+    "queue1" = false
+    "queue2" = true
+  }
+  description = "Map to describe which queue has dead letter support when a message expires. Correlates with queue_names."
+  type = map(bool)
 }
 # Action Group
 variable "action_group_name" {

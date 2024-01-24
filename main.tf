@@ -27,10 +27,12 @@ module "servicebus-namespace" {
 }
 
 module "servicebus-queue" {
+  for_each = toset(var.queue_names)
+
   source = "./servicebus-queue"
-  queue_name = var.queue_name
+  queue_name = each.key
   namespace_id = module.servicebus-namespace.namespace_id
-  dead_lettering_enabled = var.dead_lettering_enabled
+  dead_lettering_enabled = var.dead_lettering_enabled[each.value] == true ? true : false
 }
 
 module "action-group" {
