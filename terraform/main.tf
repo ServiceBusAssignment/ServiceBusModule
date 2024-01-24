@@ -33,7 +33,6 @@ module "servicebus-queue" {
   dead_lettering_enabled = var.dead_lettering_enabled
 }
 
-
 module "action-group" {
   source = "./action-group"
   resource_group_name = module.resource-group.resource_group_name
