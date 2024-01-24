@@ -4,10 +4,10 @@ resource "azurerm_monitor_metric_alert" "metric-alert" {
   scopes              = [var.namespace_id]
 
   criteria {
-    aggregation      = "Average"
-    metric_name      = "Messages"
-    metric_namespace = "Microsoft.ServiceBus/Namespaces"
-    operator         = "GreaterThan"
+    aggregation      = var.aggregation
+    metric_name      = var.metric_name
+    metric_namespace = var.metric_namespace
+    operator         = var.operator
     threshold        = var.message_threshold
   }
 

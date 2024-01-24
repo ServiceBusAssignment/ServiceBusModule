@@ -47,4 +47,8 @@ module "metric-alert" {
   message_threshold = var.alert_message_threshold
   namespace_id = module.servicebus-namespace.namespace_id
   resource_group_name = module.resource-group.resource_group_name
+  aggregation = var.metric_aggregation
+  metric_name = var.metric_name
+  metric_namespace = var.metric_namespace
+  operator = var.metric_operator
 }
