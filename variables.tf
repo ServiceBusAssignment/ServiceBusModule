@@ -20,7 +20,6 @@ variable "namespace_sku" {
 variable "queue_name_and_dlq" {
   default = {
     "queue1" = false
-    "queue2" = true
   }
   description = "Map Service Bus Queue names (string) as key and the respective dead_lettering_enabled value (bool) as value."
   type        = map(bool)
@@ -51,13 +50,6 @@ variable "alert_rule" {
       threshold          = 10
       dimension_operator = "Include"
       queue_name_list    = ["queue1"]
-    }
-    rule2 = {
-      alert_name         = "testAlert2"
-      metric_name        = "DeadletteredMessages"
-      threshold          = 0
-      dimension_operator = "Include"
-      queue_name_list    = ["queue2"]
     }
   }
 }
