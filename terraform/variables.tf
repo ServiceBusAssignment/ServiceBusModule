@@ -12,6 +12,10 @@ variable "namespace_name" {
   default = "testns22"
   description = "The name of the Azure ServiceBus Namespace."
 }
+variable "namespace_sku" {
+  default = "Standard"
+  description = "The Stock Keeping Unit Tier of the ServiceBus Namespace."
+}
 # ServiceBus Queue
 variable "queue_name" {
   default = "queue1"

@@ -23,6 +23,7 @@ module "servicebus-namespace" {
   namespace_name = var.namespace_name
   resource_group_name = module.resource-group.resource_group_name
   resource_group_location = module.resource-group.resource_group_location
+  sku = var.namespace_sku
 }
 
 module "servicebus-queue" {
