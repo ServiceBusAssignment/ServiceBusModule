@@ -36,3 +36,19 @@ variable "alert_name" {
   default = "alert1"
   description = "The name of the alert."
 }
+variable "metric_name" {
+  default = "Messages"
+  description = "The name of the metric."
+}
+variable "metric_aggregation" {
+  default = "Average"
+  description = "The aggregation type of the metric."
+}
+variable "metric_namespace" {
+  default = "Microsoft.ServiceBus/Namespaces"
+  description = "The namespace of the metric."
+}
+variable "metric_operator" {
+  default = "GreaterThan"
+  description = "The operator applied to the threshold to trigger an alert."
+}
