@@ -19,10 +19,16 @@ variable "namespace_sku" {
 # ServiceBus Queue & Dead Letter Queue
 variable "queue_name_and_dlq" {
   default = {
-    "queue1" = false
+    queue1 = {
+      queue_name             = "queue1"
+      dead_lettering_enabled = false
+    }
   }
-  description = "Map Service Bus Queue names (string) as key and the respective dead_lettering_enabled value (bool) as value."
-  type        = map(bool)
+  description = "Map of objects describing Service Bus Queue Names (string) and whether or not dead_lettering_enabled (bool) is enabled."
+  type        = map(object({
+    queue_name             = string
+    dead_lettering_enabled = bool
+  }))
 }
 # Action Group
 variable "action_group_name" {
@@ -35,6 +41,15 @@ variable "action_group_short_name" {
 }
 # Alert
 variable "alert_rule" {
+  default = {
+    rule1 = {
+      alert_name         = "defaultAlert"
+      metric_name        = "Messages"
+      threshold          = 10
+      dimension_operator = "Include"
+      queue_name_list    = ["queue1"]
+    }
+  }
   description = "Map of alert rules. Describes the desired alert name, metric (by name), threshold, and list of queues to monitor."
   type        = map(object({
     alert_name         = string
@@ -43,15 +58,6 @@ variable "alert_rule" {
     dimension_operator = string
     queue_name_list    = list(string)
   }))
-  default = {
-    rule1 = {
-      alert_name         = "testAlert"
-      metric_name        = "Messages"
-      threshold          = 10
-      dimension_operator = "Include"
-      queue_name_list    = ["queue1"]
-    }
-  }
 }
 variable "dimension_name" {
   default     = "EntityName"

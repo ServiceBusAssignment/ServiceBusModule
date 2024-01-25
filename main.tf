@@ -30,8 +30,8 @@ module "servicebus-queue" {
   source   = "./servicebus-queue"
   for_each = var.queue_name_and_dlq
 
-  dead_lettering_enabled = each.value
-  queue_name             = each.key
+  queue_name             = each.value.queue_name
+  dead_lettering_enabled = each.value.dead_lettering_enabled
 
   namespace_id = module.servicebus-namespace.namespace_id
 }
