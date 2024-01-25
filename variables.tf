@@ -19,10 +19,16 @@ variable "namespace_sku" {
 # ServiceBus Queue & Dead Letter Queue
 variable "queue_name_and_dlq" {
   default = {
-    "queue1" = false
+    queue1 = {
+      queue_name = "queue1"
+      dead_lettering_enabled = false
+    }
   }
-  description = "Map Service Bus Queue names (string) as key and the respective dead_lettering_enabled value (bool) as value."
-  type        = map(bool)
+  description = "Map of objects describing Service Bus Queue Names (string) and whether or not dead_lettering_enabled (bool) is enabled."
+  type        = map(object({
+    queue_name = string
+    dead_lettering_enabled = bool
+  }))
 }
 # Action Group
 variable "action_group_name" {
